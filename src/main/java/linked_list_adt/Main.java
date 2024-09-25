@@ -26,7 +26,19 @@ public class Main {
         linkedList.display();
         System.out.println("Kích thước: " + linkedList.size());
 
-        linkedList.insertAtPosition(20, 200);
+        // Xoa dau ds
+        linkedList.deleteAtBegin();
+        linkedList.display();
+        System.out.println("Kích thước: " + linkedList.size());
+        // Xoa cuoi
+        linkedList.deleteAtEnd();
+        linkedList.display();
+        System.out.println("Kích thước: " + linkedList.size());
+
+        // Xoa theo vi tri
+        linkedList.deleteAtPosition(2);
+        linkedList.display();
+        System.out.println("Kích thước: " + linkedList.size());
 
     }
 }

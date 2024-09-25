@@ -89,17 +89,63 @@ public class LinkedListImpl
 
     @Override
     public void deleteAtBegin() {
-
+        if (size == 0) {
+            throw new RuntimeException("Linkedlist is empty");
+        } else if (size == 1) {
+            head = null;
+            size--;
+        } else {
+            // Co nhieu hon >= 2 phan tu
+            Node nextNode = head.getNext();
+            // Bo lien ket head => nextNode
+            head.setNext(null);
+            // Gan head -> nextNode
+            head = nextNode;
+            size--;
+        }
     }
 
     @Override
     public void deleteAtEnd() {
-
+        if (size == 0) {
+            throw new RuntimeException("Linkedlist is empty");
+        } else if (size == 1) {
+            head = null;
+            size--;
+        } else {
+            // Tim vi tri gan cuoi
+            Node node = head;
+            while (node.getNext().getNext() != null) {
+                node = node.getNext();
+            }
+            // Xoa lien ket
+            node.setNext(null);
+            size--;
+        }
     }
 
     @Override
     public void deleteAtPosition(int index) {
-
+        if (index == 0) {
+            deleteAtBegin();
+        } else if (index == size - 1) {
+            deleteAtEnd();
+        } else if (index > 0 && index < size - 1) {
+            // Xoa giua: cần tìm postion-1
+            Node prevNode = head;
+            for (int i = 0; i < index - 1; i++) {
+                prevNode = prevNode.getNext();
+            }
+            Node currNode = prevNode.getNext();
+            Node nextNode = currNode.getNext();
+            // Xoa lien ket prev -> current, chuyen sang next
+            prevNode.setNext(nextNode);
+            // Xoa lien ket current -> next
+            currNode.setNext(null);
+            size--;
+        } else {
+            throw new RuntimeException("Index out of range");
+        }
     }
 
     @Override
