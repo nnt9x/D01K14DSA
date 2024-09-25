@@ -7,8 +7,11 @@ public class Main {
         linkedList.insertAtEnd(20);
         linkedList.insertAtBegin(40);
         linkedList.insertAtEnd(50);
+        System.out.println(linkedList.deleteAtBegin());
         linkedList.insertAtEnd(70);
-        // 40->10->20->50->70
+        System.out.println(linkedList.deleteAtEnd());
+        System.out.println(linkedList.deleteAtEnd());
+        // 10->20->50
         linkedList.display();
     }
 }
